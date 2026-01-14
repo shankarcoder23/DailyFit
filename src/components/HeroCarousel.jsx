@@ -1,3 +1,4 @@
+
 import "../assets/css/hero.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
@@ -29,7 +30,7 @@ const HeroCarousel = () => {
       className="carousel slide hero-carousel"
       data-bs-ride="carousel"
     >
-      {/* 🔵 Indicators */}
+      {/* Indicators */}
       <div className="carousel-indicators hero-indicators">
         {slides.map((_, index) => (
           <button
@@ -42,7 +43,7 @@ const HeroCarousel = () => {
         ))}
       </div>
 
-      {/* 🔵 Slides */}
+      {/* Slides */}
       <div className="carousel-inner">
         {slides.map((slide, index) => (
           <div
@@ -50,7 +51,7 @@ const HeroCarousel = () => {
             key={slide.id}
           >
             <div className="hero-img-wrapper">
-              <img src={slide.img} className="hero-img w-100" alt="" />
+              <img src={slide.img} className="hero-img w-100" alt={slide.title} />
               <div className="hero-overlay"></div>
             </div>
 
@@ -65,7 +66,7 @@ const HeroCarousel = () => {
         ))}
       </div>
 
-      {/* ⬅️ Left Arrow */}
+      {/* Left Arrow */}
       <button
         className="carousel-control-prev hero-arrow"
         type="button"
@@ -75,7 +76,7 @@ const HeroCarousel = () => {
         <FaChevronLeft />
       </button>
 
-      {/* ➡️ Right Arrow */}
+      {/* Right Arrow */}
       <button
         className="carousel-control-next hero-arrow"
         type="button"

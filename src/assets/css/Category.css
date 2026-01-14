@@ -1,0 +1,29 @@
+.category-card {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+}
+
+.category-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.397);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-overlay h5 {
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+}

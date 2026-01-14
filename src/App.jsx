@@ -4,6 +4,7 @@ import Category from "./components/Category";
 import HeroCarousel from "./components/HeroCarousel";
 import Home from "./pages/Home";
 import SignupModal from "./components/SignupModal";
+import Footer from "./components/Footer";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -19,6 +20,7 @@ function App() {
       <Category />
       <HeroCarousel />
       <Home addToCart={addToCart} />
+      <Footer />
     </>
   );
 }

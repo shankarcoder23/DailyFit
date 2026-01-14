@@ -1,0 +1,34 @@
+.footer {
+background: linear-gradient(90deg, #1352a57a, #7fa0c7) !important;
+}
+
+.footer h4,
+.footer h6 {
+  color: #ffffff;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #fff2f2;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #0035c7;
+}
+
+.footer-social a {
+  color: #f9fbff;
+  font-size: 18px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: #0a53f0;
+  transform: translateY(-3px);
+}

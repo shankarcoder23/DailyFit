@@ -1,16 +1,30 @@
-/* Modern Sticky Navbar */
+/* ===== Gradient Navbar ===== */
 .modern-navbar {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 25px rgba(255, 253, 253, 0.507);
+  background: linear-gradient(90deg, #9dcbdf, #203a43, #2c5364);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
   z-index: 999;
 }
 
+.navbar {
+  background: linear-gradient(90deg, #5a86be, #7fa0c7) !important;
+}
+
+.navbar-brand,
+.nav-icon {
+  color: #ffffff !important;
+}
+
 /* Brand */
 .navbar-brand {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   letter-spacing: 0.5px;
+  color: #ffffff !important;
+}
+
+.navbar-brand span {
+  color: #151616 !important;
 }
 
 /* Search Box */
@@ -20,18 +34,20 @@
   max-width: 420px;
 }
 
+
+
 .search-input {
   width: 100%;
   padding: 10px 45px;
   border-radius: 30px;
-  border: 1px solid #ddd;
+  border: none;
   outline: none;
+  background: rgba(255, 255, 255, 0.95);
   transition: all 0.3s ease;
 }
 
 .search-input:focus {
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+  box-shadow: 0 0 0 4px rgba(24, 25, 26, 0.35);
 }
 
 .search-icon {
@@ -39,29 +55,62 @@
   top: 50%;
   left: 16px;
   transform: translateY(-50%);
-  color: #999;
+  color: #666;
 }
 
 /* Icons */
 .nav-icon {
-  color: #222;
+  color: #ffffff;
   cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .nav-icon:hover {
-  color: #0d6efd;
-  transform: scale(1.1);
+  color: #00e5ff;
+  transform: scale(1.15);
 }
 
 /* Cart Badge */
 .cart-badge {
   position: absolute;
-  top: -6px;
-  right: -10px;
-  background: #dc3545;
-  color: #fff;
+  top: -7px;
+  right: -12px;
+  background: #ff3d00;
+  color: #ffffff;
   font-size: 11px;
-  padding: 2px 6px;
+  padding: 3px 7px;
   border-radius: 50%;
+  font-weight: 600;
+}
+
+/* Mobile Toggle */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+/* Sidebar */
+.mobile-sidebar {
+  width: 260px;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-links li {
+  margin-bottom: 14px;
+}
+
+.sidebar-links a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #111;
+}
+
+.sidebar-links a:hover {
+  color: #0d6efd;
 }

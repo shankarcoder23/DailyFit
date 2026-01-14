@@ -4,7 +4,7 @@ const products = [
     name: "Men Solid T-Shirt",
     category: "Men",
     price: 599,
-    image: "https://picsum.photos/300/400?random=1",
+    image: "src/assets/image/product-img/white-t-shirt.png",
   },
   {
     id: 2,
