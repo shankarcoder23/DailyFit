@@ -12,11 +12,11 @@ const Category = () => {
     },
     {
       name: "Kids",
-      image: "src/assets/image/product-img/kids-stylish-girl.png",
+      image: "src/assets/image/Category-img/kids.jpg",
     },
     {
       name: "Ethnic",
-      image: "src/assets/image/product-img/women-blue.png",
+      image: "src/assets/image/Category-img/ethnic.jpg",
     },
   ];
 
