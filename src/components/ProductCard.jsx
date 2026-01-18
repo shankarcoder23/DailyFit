@@ -1,7 +1,12 @@
 const ProductCard = ({ product, addToCart }) => {
   return (
     <div className="card h-100">
-      <img src={product.img} className="card-img-top" />
+      <img
+        src={product.image}   // FIXED
+        alt={product.name}
+        className="card-img-top"
+      />
+
       <div className="card-body text-center">
         <h6>{product.name}</h6>
         <p className="fw-bold">₹{product.price}</p>

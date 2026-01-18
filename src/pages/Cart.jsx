@@ -1,90 +1,37 @@
 import "../assets/css/Cart.css";
-import { FaTrash } from "react-icons/fa";
 
-const Cart = ({ cartItems, setCartItems }) => {
-  const increaseQty = (id) => {
-    setCartItems(
-      cartItems.map(item =>
-        item.id === id ? { ...item, qty: item.qty + 1 } : item
-      )
-    );
+const Cart = ({ cart, setCart }) => {
+  const removeItem = (index) => {
+    const updatedCart = [...cart];
+    updatedCart.splice(index, 1);
+    setCart(updatedCart);
   };
-
-  const decreaseQty = (id) => {
-    setCartItems(
-      cartItems.map(item =>
-        item.id === id && item.qty > 1
-          ? { ...item, qty: item.qty - 1 }
-          : item
-      )
-    );
-  };
-
-  const removeItem = (id) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
-  };
-
-  const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.qty,
-    0
-  );
 
   return (
     <div className="container my-5">
-      <h2 className="fw-bold mb-4">🛒 Shopping Cart</h2>
+      <h2 className="mb-4">My Cart</h2>
 
-      {cartItems.length === 0 ? (
-        <p className="text-muted">Your cart is empty.</p>
+      {cart.length === 0 ? (
+        <p>Your cart is empty.</p>
       ) : (
-        <div className="row">
-          {/* Cart Items */}
-          <div className="col-lg-8">
-            {cartItems.map(item => (
-              <div className="cart-card d-flex align-items-center mb-3" key={item.id}>
-                <img src={item.image} alt={item.name} />
-
-                <div className="ms-3 flex-grow-1">
-                  <h6 className="mb-1">{item.name}</h6>
-                  <p className="mb-1 text-muted">₹{item.price}</p>
-
-                  <div className="qty-box">
-                    <button onClick={() => decreaseQty(item.id)}>-</button>
-                    <span>{item.qty}</span>
-                    <button onClick={() => increaseQty(item.id)}>+</button>
-                  </div>
-                </div>
-
-                <button
-                  className="btn btn-outline-danger btn-sm"
-                  onClick={() => removeItem(item.id)}
-                >
-                  <FaTrash />
-                </button>
-              </div>
-            ))}
-          </div>
-
-          {/* Summary */}
-          <div className="col-lg-4">
-            <div className="summary-box">
-              <h5 className="fw-bold mb-3">Order Summary</h5>
-
-              <div className="d-flex justify-content-between mb-2">
-                <span>Total Items</span>
-                <span>{cartItems.length}</span>
-              </div>
-
-              <div className="d-flex justify-content-between fw-bold fs-5">
-                <span>Total</span>
-                <span>₹{totalPrice}</span>
-              </div>
-
-              <button className="btn btn-dark w-100 mt-3">
-                Proceed to Checkout
-              </button>
+        cart.map((item, index) => (
+          <div
+            key={index}
+            className="d-flex justify-content-between align-items-center border p-3 mb-3"
+          >
+            <div>
+              <h6>{item.name}</h6>
+              <p className="mb-0">₹{item.price}</p>
             </div>
+
+            <button
+              className="btn btn-danger btn-sm"
+              onClick={() => removeItem(index)}
+            >
+              Remove
+            </button>
           </div>
-        </div>
+        ))
       )}
     </div>
   );

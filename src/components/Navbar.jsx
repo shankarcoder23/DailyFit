@@ -1,4 +1,8 @@
+import { Link } from "react-router-dom";
+
 import "../assets/css/navbar.css";
+
+
 import {
   FaUser,
   FaShoppingCart,
@@ -12,9 +16,14 @@ const Navbar = ({ cartCount }) => {
       {/* NAVBAR */}
       <nav className="navbar navbar-expand-lg sticky-top modern-navbar px-4">
         {/* Brand */}
-        <a className="navbar-brand fw-bold" href="#">
-          Daily<span className="text-white">Fit</span>
+        <a className="navbar-brand" href="#">
+          <img
+            src="src/assets/image/logo-1.png"  // Replace with your logo path
+            alt="DailyFit Logo"
+            className="logo-img"
+          />
         </a>
+
 
         {/* MOBILE ICONS */}
         <div className="d-flex align-items-center gap-3 d-lg-none">
@@ -59,6 +68,8 @@ const Navbar = ({ cartCount }) => {
 
           {/* Desktop Icons */}
           <div className="d-flex align-items-center gap-4">
+
+            {/* User */}
             <FaUser
               size={22}
               className="nav-icon"
@@ -66,13 +77,25 @@ const Navbar = ({ cartCount }) => {
               data-bs-target="#signupModal"
             />
 
+            {/* Cart */}
             <div className="position-relative">
               <FaShoppingCart size={22} className="nav-icon" />
               {cartCount > 0 && (
                 <span className="cart-badge">{cartCount}</span>
               )}
             </div>
+
+            {/* Sidebar Toggle (Last Icon) */}
+            <button
+              className="btn text-white p-0"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#mobileSidebar"
+            >
+              <FaBars size={22} />
+            </button>
+
           </div>
+
         </div>
       </nav>
 
@@ -105,24 +128,44 @@ const Navbar = ({ cartCount }) => {
           </form>
 
           {/* Sidebar Links */}
-          <ul className="sidebar-links">
-            <li><a href="#">My Orders</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">Wishlist</a></li>
-            <li><a href="#">Cart</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact Us</a></li>
+         <ul className="sidebar-links">
+  <li>
+    <Link to="/Order" data-bs-dismiss="offcanvas">
+       Orders
+    </Link>
+  </li>
 
-            <li className="mt-3">
-              <button
-                className="btn btn-primary w-100"
-                data-bs-toggle="modal"
-                data-bs-target="#signupModal"
-              >
-                Sign Up / Sign In
-              </button>
-            </li>
-          </ul>
+  <li>
+    <Link to="/categories" data-bs-dismiss="offcanvas">
+      Categories
+    </Link>
+  </li>
+
+  <li>
+    <Link to="/wishlist" data-bs-dismiss="offcanvas">
+      Wishlist
+    </Link>
+  </li>
+
+  <li>
+    <Link to="/Cart" data-bs-dismiss="offcanvas">
+      Cart
+    </Link>
+  </li>
+
+  <li>
+    <Link to="/About" data-bs-dismiss="offcanvas">
+      About
+    </Link>
+  </li>
+
+  <li>
+    <Link to="/Contact" data-bs-dismiss="offcanvas">
+      Contact Us
+    </Link>
+  </li>
+</ul>
+
         </div>
       </div>
     </>
