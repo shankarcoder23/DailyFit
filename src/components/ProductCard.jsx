@@ -1,26 +1,30 @@
+import "../assets/css/productCard.css";
+
 const ProductCard = ({ product, addToCart }) => {
   return (
-    <div className="card h-100">
-      <img
-        src={product.image}   // FIXED
-        alt={product.name}
-        className="card-img-top"
-      />
+    <div className="product-card">
+      {/* IMAGE */}
+      <div className="product-img">
+        <img src={product.image} alt={product.name} />
+      </div>
 
-      <div className="card-body text-center">
-        <h6>{product.name}</h6>
-        <p className="fw-bold">₹{product.price}</p>
+      {/* CONTENT */}
+      <div className="product-info">
+        <h6 className="product-title">{product.name}</h6>
+        <p className="product-price">₹{product.price}</p>
 
-        <button
-          className="btn btn-outline-dark btn-sm me-2"
-          onClick={() => addToCart(product)}
-        >
-          Add to Cart
-        </button>
+        <div className="product-actions">
+          <button
+            className="btn btn-outline-dark btn-sm"
+            onClick={() => addToCart(product)}
+          >
+            Add to Cart
+          </button>
 
-        <button className="btn btn-dark btn-sm">
-          Buy Now
-        </button>
+          <button className="btn btn-dark btn-sm">
+            Buy Now
+          </button>
+        </div>
       </div>
     </div>
   );

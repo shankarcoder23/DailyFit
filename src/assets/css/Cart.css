@@ -1,39 +1,99 @@
+.cart-page {
+  font-family: "Poppins", sans-serif;
+}
+
 .cart-card {
+  display: flex;
+  align-items: center;
   background: #fff;
   border-radius: 12px;
   padding: 15px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
 }
 
-.cart-card img {
+.cart-img img {
   width: 90px;
   height: 100px;
   object-fit: cover;
   border-radius: 8px;
 }
 
+.cart-details {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.cart-details h6 {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.price {
+  color: #666;
+  margin-bottom: 10px;
+}
+
 .qty-box {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .qty-box button {
+  background: none;
   border: none;
-  background: #111;
-  color: #fff;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+  padding: 5px 12px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .qty-box span {
+  padding: 0 10px;
+}
+
+.cart-actions {
+  text-align: right;
+}
+
+.subtotal {
   font-weight: 600;
 }
 
-.summary-box {
-  background: #f8f9fa;
-  border-radius: 12px;
+.remove-btn {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.summary-card {
+  background: #fff;
   padding: 20px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #000;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.checkout-btn:hover {
+  background: #333;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 50px;
+  background: #f8f9fa;
+  border-radius: 10px;
 }

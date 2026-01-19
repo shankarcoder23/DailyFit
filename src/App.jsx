@@ -23,42 +23,48 @@ function App() {
   };
 
   return (
-    <>
-      {/* Navbar & Modal (Global) */}
+    <div className="app-wrapper">
+      {/* Navbar & Modal */}
       <Navbar cartCount={cart.length} />
       <SignupModal />
 
-      {/* Routes */}
-      <Routes>
-        {/* Home */}
-        <Route
-          path="/"
-          element={
-            <>
-              <Category />
-              <HeroCarousel />
-              <Home addToCart={addToCart} />
-            </>
-          }
-        />
+      {/* Main Content */}
+      <main className="content">
+        <Routes>
+          {/* Home */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Category />
+                <HeroCarousel />
+                <Home addToCart={addToCart} />
+              </>
+            }
+          />
 
-        {/* Cart */}
-        <Route
-          path="/cart"
-          element={<Cart cart={cart} setCart={setCart} />}
-        />
+          {/* Cart */}
+          <Route
+            path="/cart"
+            element={<Cart cart={cart} setCart={setCart} />}
+          />
 
-        {/* Static Pages */}
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/" element={<Home />} />
-      <Route path="/category/subcategory" element={<SubCategory />} />
-      </Routes>
+          {/* Static Pages */}
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/about" element={<About />} />
 
-      {/* Footer (Global) */}
+          {/* Sub Category */}
+          <Route
+            path="/category/:subcategory"
+            element={<SubCategory />}
+          />
+        </Routes>
+      </main>
+
+      {/* Footer */}
       <Footer />
-    </>
+    </div>
   );
 }
 

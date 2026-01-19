@@ -1,0 +1,57 @@
+.about-page {
+  font-family: "Poppins", sans-serif;
+}
+
+/* HERO */
+.about-hero {
+  background: linear-gradient(135deg, #495a75, #eee7e8);
+  color: white;
+  padding: 80px 0;
+}
+
+.about-hero h1 {
+  font-size: 42px;
+  font-weight: 600;
+}
+
+.about-hero p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* CARDS */
+.about-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+}
+
+.about-card svg {
+  font-size: 32px;
+  color: #327ee2ef;
+  margin-bottom: 10px;
+}
+
+.about-card h5 {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* MISSION */
+.mission-box {
+  background: #f8f9fa;
+  padding: 40px;
+  border-radius: 16px;
+}
+
+.mission-box h3 {
+  font-weight: 600;
+  color: #333;
+}

@@ -124,7 +124,7 @@ const Navbar = ({ cartCount }) => {
               <NavLink
                 to="/cart"
                 onClick={() => {
-                  const offcanvas = document.querySelector;
+                  const offcanvas = document.querySelector(".offcanvas.show");
                   if (offcanvas) offcanvas.classList.remove("show");
                 }}
               >
