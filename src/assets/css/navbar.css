@@ -114,3 +114,50 @@
 .sidebar-links a:hover {
   color: #0d6efd;
 }
+
+/* SIDEBAR BACKGROUND */
+.mobile-sidebar {
+  background: linear-gradient(180deg, #6c8baf, #1e293b);
+  color: #ffffff;
+}
+
+/* SIDEBAR HEADER */
+.mobile-sidebar .offcanvas-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mobile-sidebar h5 {
+  color: #ffffff;
+}
+
+/* CLOSE BUTTON COLOR */
+.mobile-sidebar .btn-close {
+  filter: invert(1);
+}
+
+/* SIDEBAR LINKS */
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-links li {
+  margin-bottom: 10px;
+}
+
+.sidebar-links a {
+  display: block;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.sidebar-links a:hover {
+  background-color: #d4d9e6;
+  color: #141313;
+}

@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
 import "../assets/css/navbar.css";
-
 
 import {
   FaUser,
@@ -15,19 +13,18 @@ const Navbar = ({ cartCount }) => {
     <>
       {/* NAVBAR */}
       <nav className="navbar navbar-expand-lg sticky-top modern-navbar px-4">
+
         {/* Brand */}
-        <a className="navbar-brand" href="#">
+        <NavLink className="navbar-brand" to="/">
           <img
-            src="src/assets/image/logo-1.png"  // Replace with your logo path
+            src="src/assets/image/logo-1.png"
             alt="DailyFit Logo"
             className="logo-img"
           />
-        </a>
-
+        </NavLink>
 
         {/* MOBILE ICONS */}
         <div className="d-flex align-items-center gap-3 d-lg-none">
-          {/* User */}
           <FaUser
             size={20}
             className="nav-icon"
@@ -35,7 +32,6 @@ const Navbar = ({ cartCount }) => {
             data-bs-target="#signupModal"
           />
 
-          {/* Cart */}
           <div className="position-relative">
             <FaShoppingCart size={20} className="nav-icon" />
             {cartCount > 0 && (
@@ -43,7 +39,6 @@ const Navbar = ({ cartCount }) => {
             )}
           </div>
 
-          {/* Sidebar Toggle */}
           <button
             className="btn text-white p-0"
             data-bs-toggle="offcanvas"
@@ -55,9 +50,7 @@ const Navbar = ({ cartCount }) => {
 
         {/* DESKTOP NAV */}
         <div className="collapse navbar-collapse d-none d-lg-flex">
-          {/* Search */}
           <form className="search-box me-lg-auto">
-
             <FaSearch className="search-icon" />
             <input
               type="search"
@@ -66,10 +59,7 @@ const Navbar = ({ cartCount }) => {
             />
           </form>
 
-          {/* Desktop Icons */}
           <div className="d-flex align-items-center gap-4">
-
-            {/* User */}
             <FaUser
               size={22}
               className="nav-icon"
@@ -77,7 +67,6 @@ const Navbar = ({ cartCount }) => {
               data-bs-target="#signupModal"
             />
 
-            {/* Cart */}
             <div className="position-relative">
               <FaShoppingCart size={22} className="nav-icon" />
               {cartCount > 0 && (
@@ -85,7 +74,6 @@ const Navbar = ({ cartCount }) => {
               )}
             </div>
 
-            {/* Sidebar Toggle (Last Icon) */}
             <button
               className="btn text-white p-0"
               data-bs-toggle="offcanvas"
@@ -93,9 +81,7 @@ const Navbar = ({ cartCount }) => {
             >
               <FaBars size={22} />
             </button>
-
           </div>
-
         </div>
       </nav>
 
@@ -117,7 +103,6 @@ const Navbar = ({ cartCount }) => {
         </div>
 
         <div className="offcanvas-body">
-          {/* Search */}
           <form className="search-box mb-4">
             <FaSearch className="search-icon" />
             <input
@@ -128,44 +113,65 @@ const Navbar = ({ cartCount }) => {
           </form>
 
           {/* Sidebar Links */}
-         <ul className="sidebar-links">
-  <li>
-    <Link to="/Order" data-bs-dismiss="offcanvas">
-       Orders
-    </Link>
-  </li>
+          <ul className="sidebar-links">
+            <li>
+              <NavLink to="/Orders" data-bs-dismiss="offcanvas">
+                Orders
+              </NavLink>
+            </li>
 
-  <li>
-    <Link to="/categories" data-bs-dismiss="offcanvas">
-      Categories
-    </Link>
-  </li>
+            <li>
+              <NavLink
+                to="/cart"
+                onClick={() => {
+                  const offcanvas = document.querySelector;
+                  if (offcanvas) offcanvas.classList.remove("show");
+                }}
+              >
+                Cart
+              </NavLink>
+            </li>
 
-  <li>
-    <Link to="/wishlist" data-bs-dismiss="offcanvas">
-      Wishlist
-    </Link>
-  </li>
+            <li>
+              <NavLink
+                to="/about"
+                onClick={() => {
+                  const offcanvas = document.querySelector;
+                  if (offcanvas) offcanvas.classList.remove("show");
+                }}
+              >
+                About Us
+              </NavLink>
+            </li>
 
-  <li>
-    <Link to="/Cart" data-bs-dismiss="offcanvas">
-      Cart
-    </Link>
-  </li>
+            <li>
+              <NavLink
+                to="/contact"
+                onClick={() => {
+                  const offcanvas = document.querySelector;
+                  if (offcanvas) offcanvas.classList.remove("show");
+                }}
+              >
+                Contact Us
+              </NavLink>
 
-  <li>
-    <Link to="/About" data-bs-dismiss="offcanvas">
-      About
-    </Link>
-  </li>
 
-  <li>
-    <Link to="/Contact" data-bs-dismiss="offcanvas">
-      Contact Us
-    </Link>
-  </li>
-</ul>
+            </li>
 
+             <li>
+              <NavLink
+                to="/order"
+                onClick={() => {
+                  const offcanvas = document.querySelector;
+                  if (offcanvas) offcanvas.classList.remove("show");
+                }}
+              >
+                Ny Order
+              </NavLink>
+
+              
+            </li>
+          </ul>
         </div>
       </div>
     </>

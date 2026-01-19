@@ -13,6 +13,7 @@ import Cart from "./pages/Cart";
 import Contact from "./pages/Contact";
 import Order from "./pages/Order";
 import About from "./pages/About";
+import SubCategory from "./pages/SubCategory";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -51,6 +52,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/order" element={<Order />} />
         <Route path="/about" element={<About />} />
+        <Route path="/" element={<Home />} />
+      <Route path="/category/subcategory" element={<SubCategory />} />
       </Routes>
 
       {/* Footer (Global) */}
