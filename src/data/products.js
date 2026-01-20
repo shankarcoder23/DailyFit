@@ -1,17 +1,17 @@
 // ✅ IMPORT LOCAL IMAGES (same-to-same file name)
-import whiteTshirt from "../assets/image/product-img/white-t-shirt.png";
-import redTshirt from "../assets/image/product-img/red-t-shirt.png";
-import menGreen from "../assets/image/product-img/men-green.png";
-import kidsStylish from "../assets/image/product-img/kids-stylish-girl.png";
-import stylishWomen from "../assets/image/product-img/stylish-women.png";
-import womenBlue from "../assets/image/product-img/women-blue.png";
+import whiteTshirt from "../assets/image/product-img/men-traditional.jpg";
+import redTshirt from "../assets/image/product-img/men's-skyblue-shirt.jpg";
+import menGreen from "../assets/image/product-img/men-green-tshirt.jpg";
+import kidsStylish from "../assets/image/product-img/kids-t-shirt.jpg";
+import stylishWomen from "../assets/image/product-img/women-stylish-outfit.jpg";
+import womenBlue from "../assets/image/product-img/women-kurti.jpg";
 import blackshirt from "../assets/image/product-img/men-black-shirt.jpg";
 import womenSaree from "../assets/image/product-img/women-saree.jpg";
 
 const products = [
   {
     id: 1,
-    name: "Men Solid T-Shirt",
+    name: "Men's Traditional Dress",
     category: "Men",
     price: 599,
     image: whiteTshirt,
@@ -32,14 +32,14 @@ const products = [
   },
   {
     id: 4,
-    name: "Women Stylish Dress",
+    name: "Stylish Outfit",
     category: "Women",
     price: 1299,
     image: stylishWomen,
   },
   {
     id: 5,
-    name: "Women Blue Kurti",
+    name: "Modern Design Kurti",
     category: "Women",
     price: 999,
     image: womenBlue,

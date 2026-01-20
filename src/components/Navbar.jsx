@@ -17,7 +17,7 @@ const Navbar = ({ cartCount }) => {
         {/* Brand */}
         <NavLink className="navbar-brand" to="/">
           <img
-            src="src/assets/image/logo-1.png"
+            src="src\assets\image\header-logo.png"
             alt="DailyFit Logo"
             className="logo-img"
           />
@@ -92,9 +92,11 @@ const Navbar = ({ cartCount }) => {
         id="mobileSidebar"
       >
         <div className="offcanvas-header">
-          <h5 className="fw-bold">
-            Daily<span className="text-primary">Fit</span>
-          </h5>
+          <img
+            src="src\assets\image\header-logo.png"
+            alt="DailyFit Logo"
+            className="logo-img"
+          />
           <button
             type="button"
             className="btn-close"
@@ -166,7 +168,7 @@ const Navbar = ({ cartCount }) => {
                   if (offcanvas) offcanvas.classList.remove("show");
                 }}
               >
-                Ny Order
+                My Order
               </NavLink>
 
               

@@ -1,96 +1,113 @@
 import "../assets/css/Cart.css";
+import { FaTrash } from "react-icons/fa";
 
 const Cart = ({ cart, setCart }) => {
+
+  const updateQty = (index, type) => {
+    const updated = [...cart];
+    if (type === "inc") updated[index].qty += 1;
+    if (type === "dec" && updated[index].qty > 1) updated[index].qty -= 1;
+    setCart(updated);
+  };
+
   const removeItem = (index) => {
-    const updatedCart = [...cart];
-    updatedCart.splice(index, 1);
-    setCart(updatedCart);
+    setCart(cart.filter((_, i) => i !== index));
   };
 
-  const increaseQty = (index) => {
-    const updatedCart = [...cart];
-    updatedCart[index].qty += 1;
-    setCart(updatedCart);
-  };
-
-  const decreaseQty = (index) => {
-    const updatedCart = [...cart];
-    if (updatedCart[index].qty > 1) {
-      updatedCart[index].qty -= 1;
-      setCart(updatedCart);
-    }
-  };
-
-  const totalPrice = cart.reduce(
-    (total, item) => total + item.price * item.qty,
-    0
-  );
+  const totalItems = cart.reduce((a, b) => a + b.qty, 0);
+  const totalPrice = cart.reduce((a, b) => a + b.price * b.qty, 0);
 
   return (
-    <div className="container my-5 cart-page">
-      <h3 className="mb-4 fw-bold"> My Cart</h3>
+    <div className="cart-wrapper">
+      <div className="container">
 
-      {cart.length === 0 ? (
-        <div className="empty-cart">
-          <p>Your cart is empty.</p>
-        </div>
-      ) : (
-        <div className="row">
-          {/* Cart Items */}
-          <div className="col-lg-8">
-            {cart.map((item, index) => (
-              <div className="cart-card mb-3" key={index}>
-                <div className="cart-img">
-                  <img src={item.image} alt={item.name} />
-                </div>
+        <h4 className="cart-title">
+          Shopping Cart <span>({totalItems} items)</span>
+        </h4>
 
-                <div className="cart-details">
-                  <h6>{item.name}</h6>
-                  <p className="price">₹{item.price}</p>
+        {cart.length === 0 ? (
+          <div className="modern-empty-cart">
+            <h5>Your cart is empty</h5>
+            <p>Looks like you haven't added anything yet</p>
+          </div>
+        ) : (
+          <div className="row">
+            
+            {/* LEFT – CART ITEMS */}
+            <div className="col-lg-8">
+              {cart.map((item, index) => (
+                <div className="modern-cart-card" key={index}>
 
-                  <div className="qty-box">
-                    <button onClick={() => decreaseQty(index)}>-</button>
-                    <span>{item.qty}</span>
-                    <button onClick={() => increaseQty(index)}>+</button>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="modern-cart-img"
+                  />
+
+                  <div className="modern-cart-info">
+                    <h6>{item.name}</h6>
+                    <p className="unit-price">₹{item.price}</p>
+
+                    <div className="modern-qty">
+                      <button onClick={() => updateQty(index, "dec")}>−</button>
+                      <span>{item.qty}</span>
+                      <button onClick={() => updateQty(index, "inc")}>+</button>
+                    </div>
                   </div>
+
+                  <div className="modern-cart-right">
+                    <span className="item-total">
+                      ₹{item.price * item.qty}
+                    </span>
+
+                    <button
+                      className="delete-btn"
+                      onClick={() => removeItem(index)}
+                    >
+                      <FaTrash />
+                    </button>
+                  </div>
+
                 </div>
-
-                <div className="cart-actions">
-                  <p className="subtotal">
-                    ₹{item.price * item.qty}
-                  </p>
-                  <button
-                    className="remove-btn"
-                    onClick={() => removeItem(index)}
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Order Summary */}
-          <div className="col-lg-4">
-            <div className="summary-card">
-              <h5>Order Summary</h5>
-              <hr />
-              <div className="d-flex justify-content-between">
-                <span>Total Items</span>
-                <span>{cart.length}</span>
-              </div>
-              <div className="d-flex justify-content-between fw-bold mt-2">
-                <span>Total Price</span>
-                <span>₹{totalPrice}</span>
-              </div>
-
-              <button className="checkout-btn mt-4">
-                Proceed to Checkout
-              </button>
+              ))}
             </div>
+
+            {/* RIGHT – SUMMARY */}
+            <div className="col-lg-4">
+              <div className="modern-summary">
+                <h5>Order Summary</h5>
+
+                <div className="summary-row">
+                  <span>Items</span>
+                  <span>{totalItems}</span>
+                </div>
+
+                <div className="summary-row">
+                  <span>Subtotal</span>
+                  <span>₹{totalPrice}</span>
+                </div>
+
+                <div className="summary-row">
+                  <span>Delivery</span>
+                  <span className="free">FREE</span>
+                </div>
+
+                <hr />
+
+                <div className="summary-total">
+                  <span>Total</span>
+                  <span>₹{totalPrice}</span>
+                </div>
+
+                <button className="modern-checkout-btn">
+                  Continue to Checkout
+                </button>
+              </div>
+            </div>
+
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

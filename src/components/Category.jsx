@@ -4,11 +4,11 @@ const Category = () => {
   const categories = [
     {
       name: "Men",
-      image: "src/assets/image/product-img/men-green.png",
+      image: "src/assets/image/Category-img/men.jpg",
     },
     {
       name: "Women",
-      image: "src/assets/image/product-img/stylish-women.png",
+      image: "src/assets/image/Category-img/women3.jpg",
     },
     {
       name: "Kids",

@@ -56,7 +56,7 @@ function App() {
 
           {/* Sub Category */}
           <Route
-            path="/category/:subcategory"
+            path="/category/:SubCategory"
             element={<SubCategory />}
           />
         </Routes>
