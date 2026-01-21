@@ -1,8 +1,9 @@
 import "../assets/css/Cart.css";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
 
 const Cart = ({ cart, setCart }) => {
 
+  // Update quantity
   const updateQty = (index, type) => {
     const updated = [...cart];
     if (type === "inc") updated[index].qty += 1;
@@ -10,12 +11,17 @@ const Cart = ({ cart, setCart }) => {
     setCart(updated);
   };
 
+  // Remove item
   const removeItem = (index) => {
     setCart(cart.filter((_, i) => i !== index));
   };
 
-  const totalItems = cart.reduce((a, b) => a + b.qty, 0);
-  const totalPrice = cart.reduce((a, b) => a + b.price * b.qty, 0);
+  // Total items and total price
+  const totalItems = cart.reduce((a, b) => a + (b.qty || 0), 0);
+  const totalPrice = cart.reduce(
+    (a, b) => a + (b.price || 0) * (b.qty || 0),
+    0
+  );
 
   return (
     <div className="cart-wrapper">
@@ -32,7 +38,7 @@ const Cart = ({ cart, setCart }) => {
           </div>
         ) : (
           <div className="row">
-            
+
             {/* LEFT – CART ITEMS */}
             <div className="col-lg-8">
               {cart.map((item, index) => (
@@ -49,15 +55,27 @@ const Cart = ({ cart, setCart }) => {
                     <p className="unit-price">₹{item.price}</p>
 
                     <div className="modern-qty">
-                      <button onClick={() => updateQty(index, "dec")}>−</button>
+                      <button
+                        className="qty-btn"
+                        onClick={() => updateQty(index, "dec")}
+                      >
+                        <FaMinus />
+                      </button>
+
                       <span>{item.qty}</span>
-                      <button onClick={() => updateQty(index, "inc")}>+</button>
+
+                      <button
+                        className="qty-btn"
+                        onClick={() => updateQty(index, "inc")}
+                      >
+                        <FaPlus />
+                      </button>
                     </div>
                   </div>
 
                   <div className="modern-cart-right">
                     <span className="item-total">
-                      ₹{item.price * item.qty}
+                      ₹{(item.price || 0) * (item.qty || 0)}
                     </span>
 
                     <button

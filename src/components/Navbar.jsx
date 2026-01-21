@@ -32,12 +32,13 @@ const Navbar = ({ cartCount }) => {
             data-bs-target="#signupModal"
           />
 
-          <div className="position-relative">
-            <FaShoppingCart size={20} className="nav-icon" />
-            {cartCount > 0 && (
-              <span className="cart-badge">{cartCount}</span>
-            )}
-          </div>
+          <NavLink to="/cart" className="position-relative">
+  <FaShoppingCart size={20} className="nav-icon" />
+  {cartCount > 0 && (
+    <span className="cart-badge">{cartCount}</span>
+  )}
+</NavLink>
+
 
           <button
             className="btn text-white p-0"
@@ -67,12 +68,13 @@ const Navbar = ({ cartCount }) => {
               data-bs-target="#signupModal"
             />
 
-            <div className="position-relative">
-              <FaShoppingCart size={22} className="nav-icon" />
-              {cartCount > 0 && (
-                <span className="cart-badge">{cartCount}</span>
-              )}
-            </div>
+            <NavLink to="/cart" className="position-relative">
+  <FaShoppingCart size={22} className="nav-icon" />
+  {cartCount > 0 && (
+    <span className="cart-badge">{cartCount}</span>
+  )}
+</NavLink>
+
 
             <button
               className="btn text-white p-0"

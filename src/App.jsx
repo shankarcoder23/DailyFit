@@ -18,14 +18,36 @@ import SubCategory from "./pages/SubCategory";
 function App() {
   const [cart, setCart] = useState([]);
 
+  // Add product to cart
   const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
+    setCart((prevCart) => {
+      const existing = prevCart.find((item) => item.id === product.id);
+
+      if (existing) {
+        // Increase qty if already in cart
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, qty: item.qty + 1 }
+            : item
+        );
+      }
+
+      // Add new product with qty and numeric price
+      return [
+        ...prevCart,
+        {
+          ...product,
+          qty: 1,
+          price: Number(product.price)
+        }
+      ];
+    });
   };
 
   return (
     <div className="app-wrapper">
       {/* Navbar & Modal */}
-      <Navbar cartCount={cart.length} />
+      <Navbar cartCount={cart.reduce((a, b) => a + (b.qty || 0), 0)} />
       <SignupModal />
 
       {/* Main Content */}
@@ -56,7 +78,7 @@ function App() {
 
           {/* Sub Category */}
           <Route
-            path="/category/:SubCategory"
+            path="/category/:categoryName"
             element={<SubCategory />}
           />
         </Routes>

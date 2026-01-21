@@ -61,20 +61,28 @@
 .modern-qty {
   display: inline-flex;
   align-items: center;
-  background: #f1f3f6;
+  background: #658ebd;
   border-radius: 25px;
   padding: 4px;
 }
 
-.modern-qty button {
+.modern-qty button.qty-btn {
+  background-color: #131212;
   border: none;
-  background: #fff;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  font-size: 18px;
+  padding: 5px 10px;
   cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: 0.2s;
 }
+
+.modern-qty button.qty-btn:hover {
+  background-color: #4c85c7;
+}
+
 
 .modern-qty span {
   width: 30px;
