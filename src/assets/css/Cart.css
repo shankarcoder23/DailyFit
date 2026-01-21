@@ -53,7 +53,7 @@
 
 .unit-price {
   font-size: 14px;
-  color: #888;
+  color: #011730;
   margin-bottom: 10px;
 }
 
@@ -61,13 +61,13 @@
 .modern-qty {
   display: inline-flex;
   align-items: center;
-  background: #658ebd;
+  background: #b1d6fa;
   border-radius: 25px;
   padding: 4px;
 }
 
 .modern-qty button.qty-btn {
-  background-color: #131212;
+  background-color: #2dda4a;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -75,12 +75,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: 15px;
   transition: 0.2s;
 }
 
 .modern-qty button.qty-btn:hover {
-  background-color: #4c85c7;
+  background-color: #000000;
 }
 
 
@@ -103,8 +103,8 @@
 
 .delete-btn {
   border: none;
-  background: #fff;
-  color: #ff3f6c;
+  background: #fff9f9;
+  color: #538adb;
   padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
@@ -112,10 +112,10 @@
 
 /* SUMMARY */
 .modern-summary {
-  background: #fff;
+  background: #d1e0ee;
   border-radius: 16px;
   padding: 25px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 15px 35px rgba(165, 78, 78, 0.08);
   position: sticky;
   top: 90px;
 }
@@ -129,7 +129,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  color: #555;
+  color: #000000;
 }
 
 .summary-total {
@@ -160,11 +160,11 @@
 
 /* EMPTY */
 .modern-empty-cart {
-  background: #fff;
+  background: #bb7c7c;
   border-radius: 16px;
   padding: 60px;
   text-align: center;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 15px 30px rgba(167, 96, 96, 0.06);
 }
 
 /* MOBILE */
