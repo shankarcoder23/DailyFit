@@ -117,9 +117,13 @@ const Cart = ({ cart, setCart }) => {
                   <span>₹{totalPrice}</span>
                 </div>
 
-                <button className="modern-checkout-btn">
-                  Continue to Checkout
-                </button>
+                <button
+  className="modern-checkout-btn"
+  onClick={() => navigate("/checkout")}
+>
+  Continue to Checkout
+</button>
+
               </div>
             </div>
 

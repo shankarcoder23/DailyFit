@@ -14,6 +14,7 @@ import Contact from "./pages/Contact";
 import Order from "./pages/Order";
 import About from "./pages/About";
 import SubCategory from "./pages/SubCategory";
+import Checkout from "./pages/Checkout";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -70,6 +71,13 @@ function App() {
             path="/cart"
             element={<Cart cart={cart} setCart={setCart} />}
           />
+
+          {/* Checkout */}
+<Route
+  path="/checkout"
+  element={<Checkout cart={cart} setCart={setCart} />}
+/>
+
 
           {/* Static Pages */}
           <Route path="/contact" element={<Contact />} />

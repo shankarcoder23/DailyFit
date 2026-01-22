@@ -87,6 +87,19 @@ const Navbar = ({ cartCount }) => {
         </div>
       </nav>
 
+      {/* MOBILE SEARCH BELOW NAVBAR */}
+<div className="mobile-search d-lg-none">
+  <form className="search-box">
+    <FaSearch className="search-icon" />
+    <input
+      type="search"
+      className="search-input"
+      placeholder="Search clothes..."
+    />
+  </form>
+</div>
+
+
       {/* MOBILE SIDEBAR */}
       <div
         className="offcanvas offcanvas-start mobile-sidebar"
@@ -107,14 +120,7 @@ const Navbar = ({ cartCount }) => {
         </div>
 
         <div className="offcanvas-body">
-          <form className="search-box mb-4">
-            <FaSearch className="search-icon" />
-            <input
-              type="search"
-              className="search-input"
-              placeholder="Search clothes..."
-            />
-          </form>
+          
 
           {/* Sidebar Links */}
           <ul className="sidebar-links">
