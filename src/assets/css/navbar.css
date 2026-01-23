@@ -163,15 +163,14 @@
 }
 /* MOBILE SEARCH BAR BELOW NAV */
 .mobile-search {
-  background: #fff5f518;
+  background: #679cd8bd;
   padding: 5px 10px;
-  box-shadow: 0 6px 15px rgba(255, 253, 253, 0.925);
+  box-shadow: 0 6px 15px rgba(233, 226, 226, 0.925);
   position: sticky;
   top: 65px; /* navbar height */
   z-index: 998;
 
-    background: transparent rgb(135, 165, 211); /*Remove Background*/
-  box-shadow: none;        /* REMOVE SHADOW */
+         
 }
 .search-input {
   background: #fffcfcdc;

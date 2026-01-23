@@ -1,7 +1,11 @@
 import "../assets/css/Cart.css";
 import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 
 const Cart = ({ cart, setCart }) => {
+
+  const navigate = useNavigate();
 
   // Update quantity
   const updateQty = (index, type) => {

@@ -1,51 +1,169 @@
+import { useState } from "react";
 import "../assets/css/checkout.css";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = ({ cart }) => {
+  const handleRazorpay = () => {
+  const options = {
+    key: "rzp_test_AbCdEfGhIjKlMn", //  Replace with your Razorpay Key
+    amount: totalPrice * 100, // paise
+    currency: "INR",
+    name: "DailyFit Store",
+    description: "Order Payment",
+    image: "/logo.png",
+
+    handler: function (response) {
+      console.log("Payment Success", response);
+      navigate("/order-success");
+    },
+
+    prefill: {
+      name: address.name,
+      contact: address.phone
+    },
+
+    theme: {
+      color: "#000000"
+    }
+  };
+
+  const razorpay = new window.Razorpay(options);
+  razorpay.open();
+};
+
+  const navigate = useNavigate();
+
+  const [address, setAddress] = useState({
+    name: "",
+    phone: "",
+    address: "",
+    city: "",
+    state: "",
+    pincode: ""
+  });
+
+  const [payment, setPayment] = useState("cod");
+
   const totalPrice = cart.reduce(
-    (sum, item) => sum + item.price * item.qty,
+    (total, item) => total + item.price * item.qty,
     0
   );
 
+  const placeOrder = () => {
+    if (!address.name || !address.phone || !address.address) {
+      alert("Please fill delivery details");
+      return;
+    }
+    if (payment === "cod") {
+    navigate("/order-success");
+    return;
+  }
+
+  handleRazorpay();
+};
+
   return (
-    <div className="checkout container my-5">
-      <h3 className="mb-4">Checkout</h3>
+    <div className="checkout-container">
 
-      <div className="row">
-        {/* Billing Details */}
-        <div className="col-md-7">
-          <div className="checkout-card">
-            <h5>Billing Details</h5>
+      {/* LEFT */}
+      <div className="checkout-left">
 
-            <input type="text" placeholder="Full Name" />
-            <input type="email" placeholder="Email Address" />
-            <input type="text" placeholder="Mobile Number" />
-            <input type="text" placeholder="Address" />
-            <input type="text" placeholder="City" />
-            <input type="text" placeholder="Pincode" />
+        {/* ADDRESS */}
+        <div className="checkout-card">
+          <h4> Delivery Address</h4>
 
-            <button className="btn btn-dark w-100 mt-3">
-              Place Order
-            </button>
+          <input
+            placeholder="Full Name"
+            onChange={e => setAddress({ ...address, name: e.target.value })}
+          />
+
+          <input
+            placeholder="Phone Number"
+            onChange={e => setAddress({ ...address, phone: e.target.value })}
+          />
+
+          <textarea
+            placeholder="Full Address"
+            rows="3"
+            onChange={e => setAddress({ ...address, address: e.target.value })}
+          />
+
+          <div className="grid-2">
+            <input placeholder="City" />
+            <input placeholder="State" />
           </div>
+
+          <input placeholder="Pincode" />
         </div>
 
-        {/* Order Summary */}
-        <div className="col-md-5">
-          <div className="checkout-card">
-            <h5>Order Summary</h5>
+        {/* PAYMENT */}
+<div className="checkout-card">
+  <h4> Payment Method</h4>
 
-            {cart.map((item, index) => (
-              <div className="summary-item" key={index}>
-                <span>{item.name} × {item.qty}</span>
-                <span>₹{item.price * item.qty}</span>
-              </div>
-            ))}
+  <div
+    className={`payment-option ${payment === "cod" ? "active" : ""}`}
+    onClick={() => setPayment("cod")}
+  >
+    <span className="radio"></span>
+    <div className="payment-text">
+      <strong>Cash on Delivery</strong>
+      <small>Pay when product arrives</small>
+    </div>
+  </div>
 
-            <hr />
-            <h6>Total: ₹{totalPrice}</h6>
+  <div
+    className={`payment-option ${payment === "upi" ? "active" : ""}`}
+    onClick={() => setPayment("upi")}
+  >
+    <span className="radio"></span>
+    <div className="payment-text">
+      <strong>UPI</strong>
+      <small>Google Pay / PhonePe / Paytm</small>
+    </div>
+  </div>
+
+  <div
+    className={`payment-option ${payment === "card" ? "active" : ""}`}
+    onClick={() => setPayment("card")}
+  >
+    <span className="radio"></span>
+    <div className="payment-text">
+      <strong>Credit / Debit Card</strong>
+      <small>Visa, MasterCard, RuPay</small>
+    </div>
+  </div>
+</div>
+
+
+      </div>
+
+      {/* RIGHT */}
+      <div className="checkout-right">
+        <div className="checkout-card sticky">
+
+          <h4> Order Summary</h4>
+
+          {cart.map((item, i) => (
+            <div className="summary-row" key={i}>
+              <span>{item.name} × {item.qty}</span>
+              <span>₹{item.price * item.qty}</span>
+            </div>
+          ))}
+
+          <hr />
+
+          <div className="summary-row total">
+            <span>Total</span>
+            <span>₹{totalPrice}</span>
           </div>
+
+          <button className="place-order-btn" onClick={placeOrder}>
+            Place Order
+          </button>
+
         </div>
       </div>
+
     </div>
   );
 };
