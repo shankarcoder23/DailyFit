@@ -182,3 +182,16 @@
   width: 100%;
 }
 
+.mobile-sidebar .sidebar-links li a:hover {
+  color: #000000;
+}
+
+.sidebar-social a {
+  color: #fff;
+  transition: 0.3s;
+  margin-left: 5px;
+}
+
+.sidebar-social a:hover {
+  color: #0b3fec;
+}

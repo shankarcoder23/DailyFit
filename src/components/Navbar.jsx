@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "../assets/css/navbar.css";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 import {
   FaUser,
@@ -182,6 +183,19 @@ const Navbar = ({ cartCount }) => {
               
             </li>
           </ul>
+
+           {/* Social Media Icons */}
+    <div className="sidebar-social d-flex gap-3 mt-auto">
+      <a href="https://facebook.com" target="_blank" rel="noreferrer">
+        <FaFacebookF size={20} />
+      </a>
+      <a href="https://instagram.com" target="_blank" rel="noreferrer">
+        <FaInstagram size={20} />
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noreferrer">
+        <FaTwitter size={20} />
+      </a>
+    </div>
         </div>
       </div>
     </>
