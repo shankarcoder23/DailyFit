@@ -125,11 +125,7 @@ const Navbar = ({ cartCount }) => {
 
           {/* Sidebar Links */}
           <ul className="sidebar-links">
-            <li>
-              <NavLink to="/Orders" data-bs-dismiss="offcanvas">
-                Orders
-              </NavLink>
-            </li>
+           
 
             <li>
               <NavLink

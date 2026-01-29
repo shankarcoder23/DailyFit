@@ -2,35 +2,7 @@ import { useState } from "react";
 import "../assets/css/checkout.css";
 import { useNavigate } from "react-router-dom";
 
-const Checkout = ({ cart }) => {
-  const handleRazorpay = () => {
-  const options = {
-    key: "rzp_test_AbCdEfGhIjKlMn", //  Replace with your Razorpay Key
-    amount: totalPrice * 100, // paise
-    currency: "INR",
-    name: "DailyFit Store",
-    description: "Order Payment",
-    image: "/logo.png",
-
-    handler: function (response) {
-      console.log("Payment Success", response);
-      navigate("/order-success");
-    },
-
-    prefill: {
-      name: address.name,
-      contact: address.phone
-    },
-
-    theme: {
-      color: "#000000"
-    }
-  };
-
-  const razorpay = new window.Razorpay(options);
-  razorpay.open();
-};
-
+const Checkout = ({ cart, setCart, setOrders }) => {
   const navigate = useNavigate();
 
   const [address, setAddress] = useState({
@@ -49,18 +21,75 @@ const Checkout = ({ cart }) => {
     0
   );
 
+  // -------------------------------
+  // SAVE ORDER FUNCTION
+  // -------------------------------
+  const saveOrder = () => {
+    const newOrder = {
+      id: Date.now(),
+      items: cart,
+      total: totalPrice,
+      address,
+      paymentMethod: payment,
+      status: "Placed",
+      date: new Date().toLocaleString()
+    };
+
+    setOrders((prev) => [...prev, newOrder]);
+    setCart([]);
+
+    navigate("/order");
+  };
+
+  // -------------------------------
+  // RAZORPAY
+  // -------------------------------
+  const handleRazorpay = () => {
+    const options = {
+      key: "rzp_test_AbCdEfGhIjKlMn",
+      amount: totalPrice * 100,
+      currency: "INR",
+      name: "DailyFit Store",
+      description: "Order Payment",
+
+      handler: function () {
+        saveOrder();
+      },
+
+      prefill: {
+        name: address.name,
+        contact: address.phone
+      },
+
+      theme: {
+        color: "#000000"
+      }
+    };
+
+    const razorpay = new window.Razorpay(options);
+    razorpay.open();
+  };
+
+  // -------------------------------
+  // PLACE ORDER
+  // -------------------------------
   const placeOrder = () => {
     if (!address.name || !address.phone || !address.address) {
       alert("Please fill delivery details");
       return;
     }
-    if (payment === "cod") {
-    navigate("/order-success");
-    return;
-  }
 
-  handleRazorpay();
-};
+    if (cart.length === 0) {
+      alert("Cart is empty!");
+      return;
+    }
+
+    if (payment === "cod") {
+      saveOrder();
+    } else {
+      handleRazorpay();
+    }
+  };
 
   return (
     <div className="checkout-container">
@@ -74,67 +103,92 @@ const Checkout = ({ cart }) => {
 
           <input
             placeholder="Full Name"
-            onChange={e => setAddress({ ...address, name: e.target.value })}
+            value={address.name}
+            onChange={(e) =>
+              setAddress({ ...address, name: e.target.value })
+            }
           />
 
           <input
             placeholder="Phone Number"
-            onChange={e => setAddress({ ...address, phone: e.target.value })}
+            value={address.phone}
+            onChange={(e) =>
+              setAddress({ ...address, phone: e.target.value })
+            }
           />
 
           <textarea
             placeholder="Full Address"
             rows="3"
-            onChange={e => setAddress({ ...address, address: e.target.value })}
+            value={address.address}
+            onChange={(e) =>
+              setAddress({ ...address, address: e.target.value })
+            }
           />
 
           <div className="grid-2">
-            <input placeholder="City" />
-            <input placeholder="State" />
+            <input
+              placeholder="City"
+              value={address.city}
+              onChange={(e) =>
+                setAddress({ ...address, city: e.target.value })
+              }
+            />
+            <input
+              placeholder="State"
+              value={address.state}
+              onChange={(e) =>
+                setAddress({ ...address, state: e.target.value })
+              }
+            />
           </div>
 
-          <input placeholder="Pincode" />
+          <input
+            placeholder="Pincode"
+            value={address.pincode}
+            onChange={(e) =>
+              setAddress({ ...address, pincode: e.target.value })
+            }
+          />
         </div>
 
         {/* PAYMENT */}
-<div className="checkout-card">
-  <h4> Payment Method</h4>
+        <div className="checkout-card">
+          <h4> Payment Method</h4>
 
-  <div
-    className={`payment-option ${payment === "cod" ? "active" : ""}`}
-    onClick={() => setPayment("cod")}
-  >
-    <span className="radio"></span>
-    <div className="payment-text">
-      <strong>Cash on Delivery</strong>
-      <small>Pay when product arrives</small>
-    </div>
-  </div>
+          <div
+            className={`payment-option ${payment === "cod" ? "active" : ""}`}
+            onClick={() => setPayment("cod")}
+          >
+            <span className="radio"></span>
+            <div className="payment-text">
+              <strong>Cash on Delivery</strong>
+              <small>Pay when product arrives</small>
+            </div>
+          </div>
 
-  <div
-    className={`payment-option ${payment === "upi" ? "active" : ""}`}
-    onClick={() => setPayment("upi")}
-  >
-    <span className="radio"></span>
-    <div className="payment-text">
-      <strong>UPI</strong>
-      <small>Google Pay / PhonePe / Paytm</small>
-    </div>
-  </div>
+          <div
+            className={`payment-option ${payment === "upi" ? "active" : ""}`}
+            onClick={() => setPayment("upi")}
+          >
+            <span className="radio"></span>
+            <div className="payment-text">
+              <strong>UPI</strong>
+              <small>Google Pay / PhonePe / Paytm</small>
+            </div>
+          </div>
 
-  <div
-    className={`payment-option ${payment === "card" ? "active" : ""}`}
-    onClick={() => setPayment("card")}
-  >
-    <span className="radio"></span>
-    <div className="payment-text">
-      <strong>Credit / Debit Card</strong>
-      <small>Visa, MasterCard, RuPay</small>
-    </div>
-  </div>
-</div>
-
-
+          <div
+            className={`payment-option ${payment === "card" ? "active" : ""}`}
+            onClick={() => setPayment("card")}
+          >
+            <span className="radio"></span>
+            <div className="payment-text">
+              <strong>Credit / Debit Card</strong>
+              <small>Visa, MasterCard, RuPay</small>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* RIGHT */}
@@ -145,7 +199,9 @@ const Checkout = ({ cart }) => {
 
           {cart.map((item, i) => (
             <div className="summary-row" key={i}>
-              <span>{item.name} × {item.qty}</span>
+              <span>
+                {item.name} × {item.qty}
+              </span>
               <span>₹{item.price * item.qty}</span>
             </div>
           ))}
