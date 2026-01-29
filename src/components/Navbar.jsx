@@ -125,6 +125,18 @@ const Navbar = ({ cartCount }) => {
 
           {/* Sidebar Links */}
           <ul className="sidebar-links">
+
+            <li>
+    <NavLink
+      to="/my-account"
+      onClick={() => {
+        const offcanvas = document.querySelector(".offcanvas.show");
+        if (offcanvas) offcanvas.classList.remove("show");
+      }}
+    >
+      My Account
+    </NavLink>
+  </li>
            
 
             <li>

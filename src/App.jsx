@@ -15,6 +15,7 @@ import Order from "./pages/Order";
 import About from "./pages/About";
 import SubCategory from "./pages/SubCategory";
 import Checkout from "./pages/Checkout";
+import MyAccount from "./pages/Myaccount";
 
 
 
@@ -88,6 +89,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/order" element={<Order />} />
           <Route path="/about" element={<About />} />
+          <Route path="/my-account" element={<MyAccount />} />
 
           {/* Sub Category */}
           <Route
