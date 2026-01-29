@@ -1,0 +1,45 @@
+.tracking-bar {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.tracking-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.tracking-step .dot {
+  width: 14px;
+  height: 14px;
+  background: #ccc;
+  border-radius: 50%;
+  margin: 0 auto 6px;
+}
+
+.tracking-step.active .dot {
+  background: #28a745;
+}
+
+.tracking-step span {
+  font-size: 12px;
+}
+
+.tracking-bar::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #ddd;
+  z-index: 0;
+}
+
+.tracking-step.active ~ .tracking-step::before {
+  background: #28a745;
+}
+.btn-sm {
+    background: #28a745;
+}

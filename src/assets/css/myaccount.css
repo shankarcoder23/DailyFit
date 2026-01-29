@@ -1,5 +1,5 @@
 .account-card {
-  background: #fff;
+  background: #deedff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -14,7 +14,7 @@
   border: 1px solid #e0e0e0;
   padding: 15px;
   border-radius: 6px;
-  background: #fafafa;
+  background: #c3daf1;
 }
 
 .account-links {

@@ -17,10 +17,11 @@ import SubCategory from "./pages/SubCategory";
 import Checkout from "./pages/Checkout";
 import MyAccount from "./pages/Myaccount";
 
-
-
 function App() {
   const [cart, setCart] = useState([]);
+
+  // ✅ NEW — Orders State
+  const [orders, setOrders] = useState([]);
 
   // Add product to cart
   const addToCart = (product) => {
@@ -28,7 +29,6 @@ function App() {
       const existing = prevCart.find((item) => item.id === product.id);
 
       if (existing) {
-        // Increase qty if already in cart
         return prevCart.map((item) =>
           item.id === product.id
             ? { ...item, qty: item.qty + 1 }
@@ -36,7 +36,6 @@ function App() {
         );
       }
 
-      // Add new product with qty and numeric price
       return [
         ...prevCart,
         {
@@ -75,19 +74,26 @@ function App() {
             element={<Cart cart={cart} setCart={setCart} />}
           />
 
-          {/* Checkout */}
-<Route
-  path="/checkout"
-  element={<Checkout cart={cart} />}
-/>
+          {/* ✅ Checkout */}
+          <Route
+            path="/checkout"
+            element={
+              <Checkout
+                cart={cart}
+                setCart={setCart}
+                setOrders={setOrders}
+              />
+            }
+          />
 
-{/* Order Success */}
-<Route path="/order-success" element={<Order />} />
-
+          {/* ✅ Orders Page */}
+          <Route
+            path="/order"
+            element={<Order orders={orders} />}
+          />
 
           {/* Static Pages */}
           <Route path="/contact" element={<Contact />} />
-          <Route path="/order" element={<Order />} />
           <Route path="/about" element={<About />} />
           <Route path="/my-account" element={<MyAccount />} />
 
